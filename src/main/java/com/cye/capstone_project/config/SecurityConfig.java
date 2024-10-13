@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
             .cors().and().csrf().disable()  // Enable CORS and disable CSRF
             .authorizeHttpRequests(authz -> authz
-            	    .requestMatchers("/api/auth/register", "/api/auth/login", "/api/events","/api/wishlist","/api/wishlist/**").permitAll()
+            	    .requestMatchers("/api/auth/register", "/api/auth/login", "/api/events","/api/events/**","/api/wishlist","/api/wishlist/**").permitAll()
             	    .anyRequest().authenticated()
             	)
             .formLogin().disable()

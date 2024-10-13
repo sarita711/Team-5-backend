@@ -1,3 +1,4 @@
+// EventService.java
 package com.cye.capstone_project.service;
 
 import com.cye.capstone_project.model.Event;
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventService {
@@ -35,5 +37,10 @@ public class EventService {
 
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);
+    }
+
+    // New method to get an event by ID
+    public Optional<Event> getEventById(Long id) {
+        return eventRepository.findById(id);
     }
 }
