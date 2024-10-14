@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WishlistService {
@@ -19,10 +20,20 @@ public class WishlistService {
     }
 
     public Wishlist addToWishlist(Wishlist wishlist) {
-        return wishlistRepository.save(wishlist);
+        Optional<Wishlist> existingWishlistItem = wishlistRepository.findByUserIdAndEventId(
+                wishlist.getUserId(), wishlist.getEventId()
+        );
+
+        // Check if the event is already in the user's wishlist
+        if (existingWishlistItem.isPresent()) {
+            return existingWishlistItem.get(); // Return the existing entry if present
+        } else {
+            return wishlistRepository.save(wishlist); // Save only if not present
+        }
     }
 
     public void removeFromWishlist(Long id) {
         wishlistRepository.deleteById(id);
     }
 }
+
