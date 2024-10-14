@@ -1,4 +1,3 @@
-// EventService.java
 package com.cye.capstone_project.service;
 
 import com.cye.capstone_project.model.Event;
@@ -30,7 +29,7 @@ public class EventService {
             event.setDate(updatedEvent.getDate());
             event.setTime(updatedEvent.getTime());
             event.setVenue(updatedEvent.getVenue());
-            event.setImage(updatedEvent.getImage());
+            event.setImageUrl(updatedEvent.getImageUrl());  // Use imageUrl instead of image
             return eventRepository.save(event);
         }).orElseThrow(() -> new RuntimeException("Event not found with id " + id));
     }

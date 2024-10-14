@@ -17,7 +17,7 @@ public class Event {
     private String date;
     private String time;
     private String venue;
-    private String image;
+    private String imageUrl; // Correctly named field for storing the image URL
 
     // Getters and Setters
     public Long getId() { return id; }
@@ -38,6 +38,12 @@ public class Event {
     public String getVenue() { return venue; }
     public void setVenue(String venue) { this.venue = venue; }
 
-    public String getImage() { return image; }
-    public void setImage(String image) { this.image = image; }
+    // Getter and Setter for imageUrl
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
