@@ -1,5 +1,5 @@
 package com.cye.capstone_project.controller;
-
+import org.springframework.web.multipart.MultipartFile;
 import com.cye.capstone_project.model.Event;
 import com.cye.capstone_project.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +27,13 @@ public class EventController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    
+
     @PostMapping
     public Event createEvent(@RequestBody Event event) {
         return eventService.createEvent(event);
     }
+
 
     @PutMapping("/{id}")
     public Event updateEvent(@PathVariable Long id, @RequestBody Event event) {
